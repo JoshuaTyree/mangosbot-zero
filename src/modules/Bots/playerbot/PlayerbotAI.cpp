@@ -905,6 +905,11 @@ bool PlayerbotAI::CastSpell(uint32 spellId, Unit* target)
 
     MotionMaster &mm = *bot->GetMotionMaster();
 
+	Unit* unit = bot->ToUnit();
+
+	if (unit)
+		unit->SetSpellDamageModifier(100);
+
     if (bot->IsFlying())
         return false;
 

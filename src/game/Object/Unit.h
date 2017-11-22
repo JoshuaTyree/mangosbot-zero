@@ -3690,6 +3690,16 @@ class Unit : public WorldObject
         virtual bool CanSwim() const = 0;
         virtual bool CanFly() const = 0;
 
+
+		//Spell Damage Modifications 
+		
+		uint32 GetSpellDamageModifier() {
+			return m_spellDamageMod;
+		}
+		void SetSpellDamageModifier(uint32 mod) {
+			m_spellDamageMod = mod;
+		}
+
     protected:
         explicit Unit();
 
@@ -3755,6 +3765,7 @@ class Unit : public WorldObject
         // Wrapper called by DealDamage when a creature is killed
         void JustKilledCreature(Creature* victim, Player* responsiblePlayer);
 
+		uint32 m_spellDamageMod = 0;						// Used for boosting spell damage
         uint32 m_state;                                     // Even derived shouldn't modify
         uint32 m_CombatTimer;
         bool   m_dummyCombatState;                          // Used to keep combat state during some aura
